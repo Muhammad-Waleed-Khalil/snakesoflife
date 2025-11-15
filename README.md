@@ -2,17 +2,18 @@
 
 > A dark, brutal satire web application for anonymous venting and catharsis.
 
-**Snakes of Life** is a production-ready Next.js application that provides a safe, encrypted, anonymous space for users to vent about toxic people, share stories, confess dark thoughts, and find solidarity in the darkness. All content is encrypted client-side, and no login is required.
+**Snakes of Life** is a production-ready Next.js application that provides a safe, anonymous public platform for users to vent about toxic people, share stories, confess dark thoughts, and find solidarity in the darkness. All content is encrypted at the database level, and no login is required.
 
 ---
 
 ## ✨ Features
 
 ### Core Functionality
-- 🔒 **Client-side AES-256-GCM encryption** - All user content encrypted before transmission
+- 🔒 **Database-level AES-256-GCM encryption** - All content encrypted in database and network requests
 - 👤 **Anonymous by design** - No login, no accounts, random IDs generated locally
+- 🌍 **Public platform** - Everyone can view and interact with all content
 - 🎭 **Satirical snake archetypes** - Fictional personas representing toxic people
-- 📖 **Encrypted story sharing** - Share anonymous stories with likes and comments
+- 📖 **Anonymous story sharing** - Share stories with likes and comments
 - 🔥 **Frustration Pit** - Vent your rage with visual feedback
 - 🕳️ **The Abyss** - Dark confession mode with glitch effects
 - 🔮 **Dark Oracle** - Terminal-style AI oracle powered by Google Gemini 2.0 Flash with multiple moods
@@ -130,10 +131,12 @@ Or connect your GitHub repo to Vercel dashboard.
 ## 🔒 Privacy & Security
 
 - **No login required** - Anonymous by default
-- **Client-side encryption** - AES-256-GCM before transmission
-- **Local key storage** - Keys never leave your device
-- **No tracking** - No cookies, no analytics
-- **Firebase only stores encrypted data**
+- **Database-level encryption** - AES-256-GCM encryption protects content in Firestore
+- **Public platform** - All users can read all content (shared encryption key)
+- **No tracking** - No cookies, no analytics (except optional Firebase Analytics)
+- **Content encrypted at rest** - Database and network requests contain only encrypted data
+
+**Note:** This is a public platform. Encryption protects content from database-level access and network sniffing, but all users can decrypt and view all content. Think of it like Reddit with encrypted storage.
 
 ---
 

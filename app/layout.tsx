@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import Navigation from '@/components/Navigation';
+import ClientInit from '@/components/ClientInit';
 import Link from 'next/link';
 
 export const viewport: Viewport = {
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
     template: '%s | Snakes of Life',
   },
   description:
-    'A dark, brutal satire platform for anonymous venting and catharsis. Share stories, expose fake archetypes, consult the dark oracle, and find solidarity in the snake pit. No login required. Your secrets are encrypted.',
+    'A dark, brutal satire platform for anonymous venting and catharsis. Share stories, expose fake archetypes, consult the dark oracle, and find solidarity in the snake pit. No login required. Public platform with database-level encryption.',
   keywords: [
     'anonymous venting',
     'satire',
@@ -42,7 +43,7 @@ export const metadata: Metadata = {
     siteName: 'Snakes of Life',
     title: 'Snakes of Life | Expose the Fakes, Embrace the Truth',
     description:
-      'Anonymous, encrypted platform for venting, confessions, and dark catharsis. No login required.',
+      'Anonymous public platform for venting, confessions, and dark catharsis. Database-level encryption. No login required.',
     images: [
       {
         url: '/og-image.png',
@@ -55,7 +56,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Snakes of Life | Expose the Fakes, Embrace the Truth',
-    description: 'Anonymous, encrypted venting and catharsis. No login required.',
+    description: 'Anonymous public platform for venting and catharsis. Database-level encryption. No login required.',
     images: ['/og-image.png'],
   },
 };
@@ -72,6 +73,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </head>
       <body className="font-sans">
+        <ClientInit />
         <Navigation />
 
         <main className="min-h-screen">
@@ -85,7 +87,7 @@ export default function RootLayout({
                 <h3 className="text-2xl font-creepy text-blood mb-4">Snakes of Life</h3>
                 <p className="text-gray-400 text-sm mb-4">
                   A brutal satire platform for anonymous venting and catharsis. All content is
-                  encrypted. No login required. Your secrets are yours alone.
+                  encrypted at database level. No login required. Public platform for shared catharsis.
                 </p>
                 <p className="text-xs text-gray-500">
                   This is a work of satire and fiction. No real individuals are referenced.

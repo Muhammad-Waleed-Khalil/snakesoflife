@@ -1,58 +1,48 @@
 /**
  * Client-side AES-256-GCM encryption module
  * All user content is encrypted before being sent to Firebase
+ * Uses a shared key so all users can read all content (public platform)
  */
 
-const ENCRYPTION_KEY_NAME = 'snakes_encryption_key';
 const ALGORITHM = 'AES-GCM';
 const KEY_LENGTH = 256;
 
-/**
- * Generate a new encryption key and store it in localStorage
- */
-export async function generateKey(): Promise<CryptoKey> {
-  const key = await crypto.subtle.generateKey(
-    {
-      name: ALGORITHM,
-      length: KEY_LENGTH,
-    },
-    true, // extractable
-    ['encrypt', 'decrypt']
-  );
+// Shared encryption key (same for all users)
+// This provides database-level encryption while allowing public access
+const SHARED_KEY_JWK = {
+  "alg": "A256GCM",
+  "ext": true,
+  "k": "vN8h3Kx9mP2qR5sT7uV9wX0yZ2aB4cD6eF8gH1jK3lM",
+  "key_ops": ["encrypt", "decrypt"],
+  "kty": "oct"
+};
 
-  // Export and store the key
-  const exportedKey = await crypto.subtle.exportKey('jwk', key);
-  localStorage.setItem(ENCRYPTION_KEY_NAME, JSON.stringify(exportedKey));
-
-  return key;
-}
+let cachedKey: CryptoKey | null = null;
 
 /**
- * Get the existing encryption key from localStorage or generate a new one
+ * Get the shared encryption key
  */
 export async function getKey(): Promise<CryptoKey> {
-  const storedKey = localStorage.getItem(ENCRYPTION_KEY_NAME);
-
-  if (storedKey) {
-    try {
-      const keyData = JSON.parse(storedKey);
-      return await crypto.subtle.importKey(
-        'jwk',
-        keyData,
-        {
-          name: ALGORITHM,
-          length: KEY_LENGTH,
-        },
-        true,
-        ['encrypt', 'decrypt']
-      );
-    } catch (error) {
-      console.error('Error importing stored key, generating new one:', error);
-      return await generateKey();
-    }
+  if (cachedKey) {
+    return cachedKey;
   }
 
-  return await generateKey();
+  try {
+    cachedKey = await crypto.subtle.importKey(
+      'jwk',
+      SHARED_KEY_JWK,
+      {
+        name: ALGORITHM,
+        length: KEY_LENGTH,
+      },
+      true,
+      ['encrypt', 'decrypt']
+    );
+    return cachedKey;
+  } catch (error) {
+    console.error('Error importing shared key:', error);
+    throw new Error('Failed to initialize encryption');
+  }
 }
 
 /**
@@ -136,6 +126,16 @@ export function isEncryptionAvailable(): boolean {
   return typeof window !== 'undefined' &&
          typeof crypto !== 'undefined' &&
          typeof crypto.subtle !== 'undefined';
+}
+
+/**
+ * Clean up old per-user encryption keys from localStorage
+ * (Migration function for updating to shared key system)
+ */
+export function cleanupOldKeys(): void {
+  if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
+    localStorage.removeItem('snakes_encryption_key');
+  }
 }
 
 /**
