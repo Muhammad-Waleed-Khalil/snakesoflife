@@ -1,0 +1,6 @@
+# robots.txt for Snakes of Life
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://snakesoflife.vercel.app/sitemap.xml
