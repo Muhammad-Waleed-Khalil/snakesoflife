@@ -5,7 +5,7 @@ export const snakeArchetypes: SnakeArchetype[] = [
     id: 'ex-gf-viper',
     name: 'The Ex-GF Viper',
     category: 'ex',
-    image: 'https://images.unsplash.com/photo-1531386450450-969f935bd522?w=400&h=400&fit=crop',
+    image: 'https://picsum.photos/seed/viper1/400/400',
     tagline: 'Sweet poison wrapped in nostalgia',
     description:
       'She says she\'s changed, but the venom is still fresh. Slides back into your DMs with "I miss you" at 2 AM, only to ghost you again when you respond. The Ex-GF Viper strikes when you\'re vulnerable, feeds on your hope, then vanishes into the digital night.',
@@ -23,7 +23,7 @@ export const snakeArchetypes: SnakeArchetype[] = [
     id: 'ghosting-boa',
     name: 'The Ghosting Boa',
     category: 'ex',
-    image: 'https://images.unsplash.com/photo-1545147986-a9d6f2ab03b5?w=400&h=400&fit=crop',
+    image: 'https://picsum.photos/seed/boa2/400/400',
     tagline: 'Squeezes you tight, then vanishes without a trace',
     description:
       'Everything was perfect—until it wasn\'t. One day you\'re making plans, the next you\'re staring at "read receipts" and silence. The Ghosting Boa constricts your emotions, makes you question reality, then slithers away without explanation.',
@@ -41,7 +41,7 @@ export const snakeArchetypes: SnakeArchetype[] = [
     id: 'backstabbing-bestie-cobra',
     name: 'The Backstabbing Bestie Cobra',
     category: 'friend',
-    image: 'https://images.unsplash.com/photo-1604537466608-109fa2f16c3b?w=400&h=400&fit=crop',
+    image: 'https://picsum.photos/seed/cobra3/400/400',
     tagline: 'Your secrets are her currency',
     description:
       'She\'s your "ride or die"—until she\'s the one driving the knife into your back. The Backstabbing Bestie collects your vulnerabilities like trophies, then weaponizes them when it benefits her. Your pain becomes her gossip, your trust becomes her punchline.',
@@ -59,7 +59,7 @@ export const snakeArchetypes: SnakeArchetype[] = [
     id: 'gaslighting-chameleon',
     name: 'The Gaslighting Chameleon',
     category: 'other',
-    image: 'https://images.unsplash.com/photo-1612024782955-49e8d5c1f54f?w=400&h=400&fit=crop',
+    image: 'https://picsum.photos/seed/chameleon4/400/400',
     tagline: 'Makes you doubt your own reality',
     description:
       'You know what happened. You remember the words, the pain, the patterns. But somehow, they convince you it never happened—or that you\'re the problem. The Gaslighting Chameleon twists truth like a Rubik\'s Cube until you don\'t recognize yourself anymore.',
@@ -77,7 +77,7 @@ export const snakeArchetypes: SnakeArchetype[] = [
     id: 'credit-stealing-python',
     name: 'The Credit-Stealing Office Python',
     category: 'work',
-    image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=400&fit=crop',
+    image: 'https://picsum.photos/seed/python5/400/400',
     tagline: 'Your ideas, their promotion',
     description:
       'You stayed up all night perfecting that presentation. They took two minutes to copy-paste it and present it as their own. The Credit-Stealing Python coils around your hard work, swallows it whole, and regurgitates it as their achievement.',
@@ -95,7 +95,7 @@ export const snakeArchetypes: SnakeArchetype[] = [
     id: 'two-faced-cousin-rattler',
     name: 'The Two-Faced Cousin Rattler',
     category: 'family',
-    image: 'https://images.unsplash.com/photo-1585441397835-c0cc18fd0e4f?w=400&h=400&fit=crop',
+    image: 'https://picsum.photos/seed/rattler6/400/400',
     tagline: 'Sweet at the reunion, toxic in the group chat',
     description:
       'Hugs you at family gatherings, throws shade in the group chat. The Two-Faced Cousin Rattler is all smiles and "love you cuz" in person, but the moment you leave, the venom drips. They compare, compete, and criticize—all while pretending to care.',
@@ -113,7 +113,7 @@ export const snakeArchetypes: SnakeArchetype[] = [
     id: 'energy-vampire-anaconda',
     name: 'The Energy Vampire Anaconda',
     category: 'friend',
-    image: 'https://images.unsplash.com/photo-1535083783855-76ae62b2914e?w=400&h=400&fit=crop',
+    image: 'https://picsum.photos/seed/anaconda7/400/400',
     tagline: 'Drains you dry and still asks for more',
     description:
       'Every conversation is about THEM. Their problems, their drama, their needs. You listen, advise, support—but when you need them? Crickets. The Energy Vampire Anaconda wraps around your empathy and squeezes until you\'re empty.',
@@ -131,7 +131,7 @@ export const snakeArchetypes: SnakeArchetype[] = [
     id: 'fake-supportive-sidewinder',
     name: 'The Fake Supportive Sidewinder',
     category: 'friend',
-    image: 'https://images.unsplash.com/photo-1516728043813-6f5d2e401e1e?w=400&h=400&fit=crop',
+    image: 'https://picsum.photos/seed/sidewinder8/400/400',
     tagline: 'Cheers for your dreams while hoping you fail',
     description:
       'They say "you got this!" but secretly hope you don\'t. The Fake Supportive Sidewinder celebrates your small wins with a tight smile, asks invasive questions to find weak spots, and subtly discourages you from success. They need you beneath them to feel above.',

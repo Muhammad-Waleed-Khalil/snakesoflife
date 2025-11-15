@@ -1,7 +1,14 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import Navigation from '@/components/Navigation';
 import Link from 'next/link';
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: '#DC143C',
+};
 
 export const metadata: Metadata = {
   title: {
@@ -51,12 +58,6 @@ export const metadata: Metadata = {
     description: 'Anonymous, encrypted venting and catharsis. No login required.',
     images: ['/og-image.png'],
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-  },
-  themeColor: '#DC143C',
 };
 
 export default function RootLayout({
