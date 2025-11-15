@@ -7,68 +7,49 @@ import Card from '@/components/Card';
 
 type Mood = 'venomous' | 'brutal' | 'merciful' | 'chaotic';
 
-const responses: Record<Mood, string[]> = {
-  venomous: [
-    'You already know the answer. You just don\'t want to accept how pathetic it is.',
-    'They\'re not coming back. And honestly? You dodged a serpent.',
-    'The truth is: they never cared as much as you did. Move on.',
-    'Stop asking questions you already know the answer to. It\'s embarrassing.',
-    'You\'re not confused. You\'re just afraid of being alone. Get over it.',
-    'The oracle sees your future: more of the same until you grow a spine.',
-  ],
-  brutal: [
-    'You\'re the common denominator in all your problems. Fix yourself first.',
-    'They showed you who they are. You chose to ignore it. That\'s on you.',
-    'No, it won\'t get better if you just "give it time." Cut it off.',
-    'You don\'t have bad luck. You have bad judgment. Learn the difference.',
-    'The oracle speaks: You\'re wasting your time on people who wouldn\'t cross the street for you.',
-    'Stop romanticizing pain. Suffering isn\'t poetic—it\'s just stupid.',
-  ],
-  merciful: [
-    'You deserve better. But you won\'t get it until you believe it yourself.',
-    'It\'s okay to walk away from people who drain you. Self-preservation isn\'t selfish.',
-    'The pain will pass. Not today, maybe not tomorrow, but it will.',
-    'You\'re stronger than you think. The fact that you\'re still here proves it.',
-    'Sometimes the best revenge is just living well and forgetting they exist.',
-    'The oracle sees growth in your future. But only if you let go of the past.',
-  ],
-  chaotic: [
-    'Burn the bridge. Dance on the ashes. Post it on social media.',
-    'The oracle says: Send that risky text. What\'s the worst that could happen? (Actually, don\'t.)',
-    'Chaos mode activated: Block them, but keep checking their profile. It\'s a vibe.',
-    'You want advice? Here: Do the opposite of whatever you were planning.',
-    'The spirits are confused. Are you asking about love or self-destruction? Same thing, probably.',
-    'The oracle suggests: Scream into a pillow, eat some snacks, and reassess in the morning.',
-  ],
-};
-
 export default function OraclePage() {
   const [question, setQuestion] = useState('');
   const [mood, setMood] = useState<Mood>('venomous');
   const [response, setResponse] = useState('');
   const [isTyping, setIsTyping] = useState(false);
 
-  const handleAsk = () => {
+  const handleAsk = async () => {
     if (!question.trim()) return;
 
     setIsTyping(true);
     setResponse('');
 
-    // Simulate typing effect
-    setTimeout(() => {
-      const randomResponse = responses[mood][Math.floor(Math.random() * responses[mood].length)];
-      let index = 0;
+    try {
+      // Call Gemini API
+      const res = await fetch('/api/oracle', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question, mood }),
+      });
 
+      if (!res.ok) {
+        throw new Error('Failed to get oracle response');
+      }
+
+      const data = await res.json();
+      const oracleResponse = data.response;
+
+      // Typing effect with API response
+      let index = 0;
       const typingInterval = setInterval(() => {
-        if (index < randomResponse.length) {
-          setResponse((prev) => prev + randomResponse[index]);
+        if (index < oracleResponse.length) {
+          setResponse((prev) => prev + oracleResponse[index]);
           index++;
         } else {
           clearInterval(typingInterval);
           setIsTyping(false);
         }
       }, 30);
-    }, 500);
+    } catch (error) {
+      console.error('Oracle error:', error);
+      setResponse('The oracle is temporarily unavailable. Even dark powers need a break sometimes.');
+      setIsTyping(false);
+    }
   };
 
   return (
@@ -170,7 +151,7 @@ export default function OraclePage() {
         {/* Info */}
         <div className="mt-8 text-center text-gray-600 text-sm space-y-2">
           <p>The Oracle is not responsible for hurt feelings or existential crises.</p>
-          <p>Responses are randomly generated for satirical purposes.</p>
+          <p>Powered by AI. Responses are generated for satirical purposes.</p>
         </div>
       </div>
     </div>

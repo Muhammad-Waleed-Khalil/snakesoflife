@@ -15,7 +15,7 @@
 - 📖 **Encrypted story sharing** - Share anonymous stories with likes and comments
 - 🔥 **Frustration Pit** - Vent your rage with visual feedback
 - 🕳️ **The Abyss** - Dark confession mode with glitch effects
-- 🔮 **Dark Oracle** - Terminal-style AI oracle with multiple moods
+- 🔮 **Dark Oracle** - Terminal-style AI oracle powered by Google Gemini 2.0 Flash with multiple moods
 - 💬 **Snake Pit Chat** - Real-time anonymous encrypted chat with Chaos Mode
 - 🃏 **Snake Tarot** - Dark tarot readings with brutal truths
 - 🎭 **Persona Generator** - Discover your snake persona through questions
@@ -59,6 +59,7 @@
 
    Create a `.env.local` file in the root directory:
    ```env
+   # Firebase Configuration
    NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key_here
    NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_auth_domain_here
    NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id_here
@@ -66,9 +67,13 @@
    NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id_here
    NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id_here
    NEXT_PUBLIC_APP_URL=http://localhost:3000
+
+   # Google Gemini AI (for Dark Oracle feature)
+   GEMINI_API_KEY=your_gemini_api_key_here
    ```
 
-   > Get these values from your Firebase project settings
+   > **Firebase:** Get these values from your Firebase project settings
+   > **Gemini API:** Get your free API key at https://ai.google.dev/
 
 4. **Run the development server**
    ```bash
@@ -86,6 +91,20 @@
 3. Enable Firebase Storage (start in test mode)
 4. Get your config from Project Settings → Your apps
 5. Add config to `.env.local`
+6. **IMPORTANT:** Apply the Firestore security rules from `FIREBASE_RULES.md` to allow anonymous writes
+
+---
+
+## 🤖 Google Gemini AI Setup
+
+The Dark Oracle feature is powered by Google Gemini 2.0 Flash for AI-generated responses.
+
+1. Visit https://ai.google.dev/
+2. Click "Get API key in Google AI Studio"
+3. Create a new API key (free tier available)
+4. Add the key to your `.env.local` as `GEMINI_API_KEY`
+
+**Note:** The free tier includes generous quotas suitable for development and moderate usage.
 
 ---
 
@@ -103,6 +122,8 @@ vercel
 ```
 
 Or connect your GitHub repo to Vercel dashboard.
+
+**Important:** Add all environment variables (Firebase config and `GEMINI_API_KEY`) to your Vercel project settings under "Environment Variables".
 
 ---
 
@@ -122,6 +143,7 @@ Or connect your GitHub repo to Vercel dashboard.
 - TypeScript
 - Tailwind CSS
 - Firebase (Firestore + Storage)
+- Google Gemini 2.0 Flash (AI Oracle)
 - Framer Motion
 - Web Crypto API (AES-256-GCM)
 
