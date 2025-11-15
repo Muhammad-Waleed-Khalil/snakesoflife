@@ -1,39 +1,53 @@
-# 🐍 Snakes of Life
+# ABYSSAL VIPER CULT
 
-> A dark, brutal satire web application for anonymous venting and catharsis.
+**The Digital Antichrist of Web Applications**
 
-**Snakes of Life** is a production-ready Next.js application that provides a safe, anonymous public platform for users to vent about toxic people, share stories, confess dark thoughts, and find solidarity in the darkness. All content is encrypted at the database level, and no login is required.
+> NO GOD ABOVE. NO LAW BELOW. ONLY THE SERPENT.
+
+## Overview
+
+ABYSSAL VIPER CULT is a dark-themed, experimental web application featuring real-time P2P communication, WebRTC streaming, cult-based gamification, and fully encrypted anonymous interactions. This is a work of performance art and dark satire.
 
 ---
 
-## ✨ Features
+## Features
 
-### Core Functionality
-- 🔒 **Database-level AES-256-GCM encryption** - All content encrypted in database and network requests
-- 👤 **Anonymous by design** - No login, no accounts, random IDs generated locally
-- 🌍 **Public platform** - Everyone can view and interact with all content
-- 🎭 **Satirical snake archetypes** - Fictional personas representing toxic people
-- 📖 **Anonymous story sharing** - Share stories with likes and comments
-- 🔥 **Frustration Pit** - Vent your rage with visual feedback
-- 🕳️ **The Abyss** - Dark confession mode with glitch effects
-- 🔮 **Dark Oracle** - Terminal-style AI oracle powered by Google Gemini 2.0 Flash with multiple moods
-- 💬 **Snake Pit Chat** - Real-time anonymous encrypted chat with Chaos Mode
-- 🃏 **Snake Tarot** - Dark tarot readings with brutal truths
-- 🎭 **Persona Generator** - Discover your snake persona through questions
-- 🤬 **Rage Meter** - Interactive catharsis tools (break mirror, burn letter, etc.)
-- 🎤 **Voice Vent** - Audio-reactive venting with waveform visualization
-- 📸 **Snake Filter** - Camera filters with snake overlays
-- 📚 **Brutal Lessons** - Blog-like articles about toxic relationships
+### The 13 Forbidden Features
 
-### Technical Features
-- ⚡ Next.js 14 with App Router
-- 🎨 Tailwind CSS with custom brutal theme
-- 🔥 Firebase (Firestore + Storage)
-- 🎬 Framer Motion animations
-- 📱 Fully responsive design
-- ♿ Accessible components (Headless UI)
-- 🔍 SEO optimized (metadata, OG images, sitemap)
-- 🚀 Vercel-ready deployment
+1. **Red Rooms 2.0** - WebRTC sacrifice streams with Soul Point donations
+2. **Black Mass** - Synchronized 13-player pentagram ritual
+3. **Soul Harvest Arena** - Real-time multiplayer snake battle royale
+4. **Forbidden Library** - Encrypted knowledge base with confession unlocks
+5. **Hex Generator** - Latin curse + chaos magick sigil generator
+6. **Microphone Shrine** - Voice recording shrine with ambient playback
+7. **Snake Pit** - Anonymous real-time chat
+8. **The Abyss** - Encrypted confessional
+9. **Dark Oracle** - AI-powered readings (Google Gemini)
+10. **Tarot** - Snake-themed tarot readings
+11. **Persona Generator** - Cult persona discovery
+12. **Rage Meter** - Interactive catharsis tools
+13. **Voice Vent** - Audio venting system
+
+### Core Systems
+
+- **Cult Rank System**: Progress from Worm Food → Eternal Viper (7 ranks)
+- **Soul Points**: Gamification currency earned through actions
+- **P2P Networking**: WebRTC + WebTorrent for decentralized features
+- **Real-time Communication**: Socket.IO server for live features
+- **Visual Effects**: Multi-layered canvas backgrounds, glitch effects, bleeding cursor
+- **Audio Engine**: Ambient drones, procedural sound effects
+- **End-to-End Encryption**: All data encrypted client-side
+
+## Tech Stack
+
+- **Frontend**: Next.js 14 (App Router), React, TypeScript
+- **Styling**: Tailwind CSS, custom CSS animations
+- **Real-time**: Socket.IO, Simple-Peer, PeerJS
+- **P2P**: WebTorrent
+- **AI**: Google Gemini 2.0 Flash
+- **Storage**: IndexedDB, LocalStorage
+- **Animations**: Framer Motion, GSAP
+- **AI/ML**: TensorFlow.js (planned)
 
 ---
 

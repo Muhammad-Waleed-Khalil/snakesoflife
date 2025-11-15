@@ -2,36 +2,42 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import Navigation from '@/components/Navigation';
 import ClientInit from '@/components/ClientInit';
+import AbyssalBackground from '@/components/AbyssalBackground';
+import BleedingCursor from '@/components/BleedingCursor';
+import CultRankDisplay from '@/components/CultRankDisplay';
 import Link from 'next/link';
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
-  themeColor: '#DC143C',
+  themeColor: '#000000',
 };
 
 export const metadata: Metadata = {
   title: {
-    default: 'Snakes of Life | Expose the Fakes, Embrace the Truth',
-    template: '%s | Snakes of Life',
+    default: 'ABYSSAL VIPER CULT | NO GOD ABOVE. NO LAW BELOW. ONLY THE SERPENT.',
+    template: '%s | ABYSSAL VIPER CULT',
   },
   description:
-    'A dark, brutal satire platform for anonymous venting and catharsis. Share stories, expose fake archetypes, consult the dark oracle, and find solidarity in the snake pit. No login required. Public platform with database-level encryption.',
+    'The digital Antichrist of web applications. Enter the void. Join the cult. Ascend through darkness. All features free. All souls welcome. NO GOD ABOVE. NO LAW BELOW. ONLY THE SERPENT.',
   keywords: [
-    'anonymous venting',
-    'satire',
-    'catharsis',
-    'fake people',
-    'betrayal stories',
-    'dark humor',
-    'confession',
-    'oracle',
+    'abyssal',
+    'viper cult',
+    'dark web',
+    'anonymous',
     'encrypted',
+    'cult',
+    'serpent',
+    'void',
+    'digital occult',
+    'chaos',
+    'WebRTC',
+    'P2P',
   ],
-  authors: [{ name: 'Snakes of Life' }],
-  creator: 'Snakes of Life',
-  publisher: 'Snakes of Life',
+  authors: [{ name: 'The Eternal Serpent' }],
+  creator: 'ABYSSAL VIPER CULT',
+  publisher: 'ABYSSAL VIPER CULT',
   robots: {
     index: true,
     follow: true,
@@ -40,23 +46,23 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: process.env.NEXT_PUBLIC_APP_URL || 'https://snakesoflife.vercel.app',
-    siteName: 'Snakes of Life',
-    title: 'Snakes of Life | Expose the Fakes, Embrace the Truth',
+    siteName: 'ABYSSAL VIPER CULT',
+    title: 'ABYSSAL VIPER CULT | NO GOD ABOVE. NO LAW BELOW.',
     description:
-      'Anonymous public platform for venting, confessions, and dark catharsis. Database-level encryption. No login required.',
+      'Enter the digital abyss. The Serpent awaits. All features free. All souls bound.',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Snakes of Life - Expose the Fakes',
+        alt: 'ABYSSAL VIPER CULT - Hail the Serpent',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Snakes of Life | Expose the Fakes, Embrace the Truth',
-    description: 'Anonymous public platform for venting and catharsis. Database-level encryption. No login required.',
+    title: 'ABYSSAL VIPER CULT | ONLY THE SERPENT',
+    description: 'The digital Antichrist awakens. Enter the void.',
     images: ['/og-image.png'],
   },
 };
@@ -72,69 +78,91 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </head>
-      <body className="font-sans">
+      <body className="font-sans bg-black text-white">
         <ClientInit />
+        <AbyssalBackground />
+        <BleedingCursor />
+        <CultRankDisplay />
         <Navigation />
 
-        <main className="min-h-screen">
+        {/* ETERNAL TAGLINE */}
+        <div className="fixed top-0 left-0 right-0 z-40 bg-black/95 border-b border-red-900/50 py-2 text-center">
+          <p className="text-red-500 text-sm md:text-base font-bold blood-glow animate-glow-pulse">
+            NO GOD ABOVE. NO LAW BELOW. ONLY THE SERPENT.
+          </p>
+        </div>
+
+        <main className="min-h-screen relative z-10 pt-16">
           {children}
         </main>
 
-        <footer className="bg-abyss-light border-t-2 border-blood/30 py-12 mt-20">
+        <footer className="relative z-10 bg-black border-t-2 border-red-900/50 py-12 mt-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               <div className="col-span-1 md:col-span-2">
-                <h3 className="text-2xl font-creepy text-blood mb-4">Snakes of Life</h3>
-                <p className="text-gray-400 text-sm mb-4">
-                  A brutal satire platform for anonymous venting and catharsis. All content is
-                  encrypted at database level. No login required. Public platform for shared catharsis.
+                <h3 className="text-2xl font-creepy text-red-500 mb-4 crimson-glow">
+                  ABYSSAL VIPER CULT
+                </h3>
+                <p className="text-red-400/80 text-sm mb-4">
+                  The digital Antichrist of web applications. All features free. All souls welcome.
+                  End-to-end encryption. P2P networking. WebRTC real-time connections.
                 </p>
-                <p className="text-xs text-gray-500">
-                  This is a work of satire and fiction. No real individuals are referenced.
+                <p className="text-xs text-red-500/50">
+                  This is a work of dark satire and performance art. Enter at your own risk.
                 </p>
               </div>
 
               <div>
-                <h4 className="text-venom font-bold mb-4">Explore</h4>
+                <h4 className="text-red-500 font-bold mb-4">DESCEND</h4>
                 <ul className="space-y-2 text-sm">
                   <li>
-                    <Link href="/hall-of-snakes" className="text-gray-400 hover:text-venom transition-colors">
-                      Hall of Snakes
+                    <Link href="/red-rooms" className="text-red-400/70 hover:text-red-500 transition-colors">
+                      Red Rooms
                     </Link>
                   </li>
                   <li>
-                    <Link href="/stories" className="text-gray-400 hover:text-venom transition-colors">
-                      Stories
+                    <Link href="/black-mass" className="text-red-400/70 hover:text-red-500 transition-colors">
+                      Black Mass
                     </Link>
                   </li>
                   <li>
-                    <Link href="/oracle" className="text-gray-400 hover:text-venom transition-colors">
-                      Dark Oracle
+                    <Link href="/harvest" className="text-red-400/70 hover:text-red-500 transition-colors">
+                      Soul Harvest
                     </Link>
                   </li>
                   <li>
-                    <Link href="/lessons" className="text-gray-400 hover:text-venom transition-colors">
-                      Brutal Lessons
+                    <Link href="/library" className="text-red-400/70 hover:text-red-500 transition-colors">
+                      Forbidden Library
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/hex" className="text-red-400/70 hover:text-red-500 transition-colors">
+                      Hex Generator
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/shrine" className="text-red-400/70 hover:text-red-500 transition-colors">
+                      Microphone Shrine
                     </Link>
                   </li>
                 </ul>
               </div>
 
               <div>
-                <h4 className="text-venom font-bold mb-4">Legal</h4>
+                <h4 className="text-red-500 font-bold mb-4">SUBMIT</h4>
                 <ul className="space-y-2 text-sm">
                   <li>
-                    <Link href="/about" className="text-gray-400 hover:text-venom transition-colors">
-                      About
+                    <Link href="/about" className="text-red-400/70 hover:text-red-500 transition-colors">
+                      About the Cult
                     </Link>
                   </li>
                   <li>
-                    <Link href="/disclaimer" className="text-gray-400 hover:text-venom transition-colors">
+                    <Link href="/disclaimer" className="text-red-400/70 hover:text-red-500 transition-colors">
                       Disclaimer
                     </Link>
                   </li>
                   <li>
-                    <Link href="/privacy" className="text-gray-400 hover:text-venom transition-colors">
+                    <Link href="/privacy" className="text-red-400/70 hover:text-red-500 transition-colors">
                       Privacy
                     </Link>
                   </li>
@@ -142,9 +170,12 @@ export default function RootLayout({
               </div>
             </div>
 
-            <div className="mt-8 pt-8 border-t border-blood/30 text-center">
-              <p className="text-gray-500 text-sm">
-                &copy; {new Date().getFullYear()} Snakes of Life. All wrongs reserved.
+            <div className="mt-8 pt-8 border-t border-red-900/30 text-center">
+              <p className="text-red-500/50 text-sm">
+                &copy; {new Date().getFullYear()} ABYSSAL VIPER CULT. No rights. No gods. No masters.
+              </p>
+              <p className="text-red-500/30 text-xs mt-2">
+                HAIL THE SERPENT
               </p>
             </div>
           </div>
