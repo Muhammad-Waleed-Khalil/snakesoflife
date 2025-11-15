@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-abyss text-white antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    @apply bg-blood text-white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-abyss;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-blood rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-blood-light;
+  }
+}
+
+@layer components {
+  .venom-glow {
+    text-shadow: 0 0 10px theme('colors.venom.DEFAULT'),
+      0 0 20px theme('colors.venom.DEFAULT'),
+      0 0 30px theme('colors.venom.DEFAULT');
+  }
+
+  .blood-glow {
+    text-shadow: 0 0 10px theme('colors.blood.DEFAULT'),
+      0 0 20px theme('colors.blood.DEFAULT'),
+      0 0 30px theme('colors.blood.DEFAULT');
+  }
+
+  .glass-morphism {
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .crack-effect {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .crack-effect::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0 L50 100 M0 50 L100 50 M25 0 L75 100 M75 0 L25 100' stroke='%23DC143C' stroke-width='0.5' opacity='0.3'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .crack-effect:hover::after {
+    opacity: 1;
+  }
+
+  .graffiti-text {
+    font-family: 'Creepster', cursive;
+    letter-spacing: 0.05em;
+    transform: rotate(-2deg);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-shake {
+    animation: shake 0.5s ease-in-out;
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+    20%, 40%, 60%, 80% { transform: translateX(10px); }
+  }
+
+  .animate-burn {
+    animation: burn 2s ease-in-out forwards;
+  }
+
+  @keyframes burn {
+    0% {
+      opacity: 1;
+      filter: brightness(1);
+    }
+    50% {
+      opacity: 0.8;
+      filter: brightness(1.5) blur(1px);
+      color: theme('colors.blood.DEFAULT');
+    }
+    100% {
+      opacity: 0;
+      filter: brightness(0) blur(3px);
+      transform: scale(0.9);
+    }
+  }
+
+  .distortion-filter {
+    filter: contrast(1.2) saturate(1.3);
+  }
+}
