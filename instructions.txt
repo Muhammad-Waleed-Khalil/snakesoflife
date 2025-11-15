@@ -1,0 +1,745 @@
+You are an expert full-stack web engineer.
+Build a production-ready, Vercel-deployable, dark, brutal satire web application called “Snakes of Life”.
+
+The app exposes fictional archetypes of fake people (no real individuals), lets users vent, confess, chat, and consult a dark oracle, all anonymously, with end-to-end-style encryption and strong UX.
+
+You MUST follow all instructions below.
+
+🟣 0. PLATFORM & TECH REQUIREMENTS
+Target platform
+
+The app must be fully ready for deployment on Vercel with:
+
+Correct project structure
+
+package.json
+
+Build scripts
+
+Environment variable usage
+
+SEO-optimized routing
+
+Tech stack (you CAN use modern tools):
+
+Framework: Next.js 14+ (App Router) with TypeScript
+
+Styling: Tailwind CSS (or a similar utility-first CSS framework) + custom CSS for brutal visuals
+
+UI/UX:
+
+Prefer Headless UI, Radix UI, or similar for accessible components
+
+Use Framer Motion or CSS animations for brutal effects
+
+State management: lightweight (Zustand, Context API, or just React hooks)
+
+Forms & validation: Zod or similar for schema validation
+
+Database & storage:
+
+Firebase:
+
+Firestore for data storage
+
+Firebase Storage for file uploads (images)
+
+APIs:
+
+Use Next.js Route Handlers or API routes for backend logic if needed (e.g., generating signed upload URLs, server-side helpers).
+
+Security & Encryption:
+
+Implement client-side AES-256 encryption for all user content before sending to Firebase.
+
+Encryption key is generated per user and stored in browser storage (e.g., localStorage or IndexedDB).
+
+Deployment:
+
+App should deploy cleanly to Vercel with npm run build / npm run start.
+
+🔒 1. PRIVACY, ANONYMITY & ENCRYPTION
+No login:
+
+No authentication:
+
+No email/password
+
+No OAuth
+
+Each user gets a random anonymous ID generated client-side, persisted in localStorage.
+
+Used for likes, comments, saves, chat nicknames.
+
+Client-side encryption:
+
+All user-generated content MUST be encrypted before being sent to Firebase:
+
+Stories
+
+Confessions
+
+Frustration posts
+
+Chat messages
+
+Comments
+
+Any personal metadata
+
+Use AES-256-GCM or similar robust symmetric encryption.
+
+Encryption key:
+
+Generated locally per user
+
+Stored only on the client (e.g., in localStorage)
+
+Never stored in plaintext on Firebase or Vercel.
+
+Firebase only stores:
+
+ciphertext
+
+non-sensitive metadata (timestamps, counters, derived IDs, etc.)
+
+Provide a dedicated encryption.ts module with:
+
+generateKey()
+
+encrypt(text: string): Promise<string>
+
+decrypt(ciphertext: string): Promise<string>
+
+🐍 2. THEME & AESTHETIC
+Visual style:
+
+Dark, brutal, gritty design:
+
+Backgrounds: pure black or near-black
+
+Primary highlight: blood-red
+
+Accent: toxic neon green (for snake motifs)
+
+Use:
+
+Horror/creepy display font (e.g., Creepster or similar via Google Fonts) for headings.
+
+Sans-serif readable font (e.g., Roboto, Inter, or similar) for body text.
+
+Imagery:
+
+Snakes, venom, cracks, broken hearts, chains
+
+Use free placeholder images/illustrations (no copyrighted/paid content)
+
+All images must include alt text for accessibility and SEO.
+
+Tone:
+
+Raw, aggressive, darkly humorous
+
+Profanity allowed for text like “F*** the fakes” (you can obfuscate vowels if needed)
+
+No:
+
+Real-world harassment
+
+Targeted hate
+
+Explicit real violence calls
+
+Only fictional archetypes and satirical commentary.
+
+Animations:
+
+Snake “slither” hover animations
+
+Cards that “crack” on click
+
+Venom-drip transitions
+
+Glitch effects for headings and special modes
+
+Smooth but intense microinteractions (e.g., Framer Motion, CSS transitions)
+
+🧭 3. APP STRUCTURE & PAGES (Next.js App Router)
+
+Use the App Router (app/ directory) with file-based routing. At minimum, include these routes:
+
+/ — Home / Den of Snakes
+
+/hall-of-snakes — Hall of archetype profiles
+
+/stories — Encrypted anonymous stories + story feed
+
+/frustration-pit — “Unleash your venom” venting area
+
+/abyss — Confession mode
+
+/oracle — Dark AI Oracle (mocked or pluggable)
+
+/snake-pit — Anonymous chatroom
+
+/tarot — Snake Tarot reading
+
+/persona — Snake persona generator
+
+/rage-meter — Interactive rage tools
+
+/voice-vent — Voice-based vent mode
+
+/snake-filter — Camera-based snake overlays
+
+/lessons — Brutal Lessons (blog-like articles)
+
+/about — Satirical About page
+
+/disclaimer — Disclaimer & safety
+
+/privacy — Privacy note (explaining encryption & anonymity)
+
+/api/* — any necessary API routes (if used for auxiliary functions)
+
+🏠 4. HOMEPAGE (/)
+Content:
+
+Hero section:
+
+H1:
+“Welcome to the Den of Snakes — Exposing the Fakes Who Slither Through Life.”
+
+Subtext explaining that it’s:
+
+Satirical
+
+Cathartic
+
+NOT real-life targeted harassment
+
+Prominent CTAs:
+
+“Share a Snake Story”
+
+“Spit Your Frustration”
+
+“Consult the Dark Oracle”
+
+“Enter the Snake Pit Chat”
+
+Featured snake gallery:
+
+Horizontal scroll or carousel
+
+Each card: archetype name, image, one-liner description.
+
+🐍 5. HALL OF SNAKES (/hall-of-snakes)
+
+A grid of fictional archetypes like:
+
+The Ex-GF Viper
+
+The Ghosting Boa
+
+The Backstabbing Bestie Cobra
+
+The Gaslighting Chameleon
+
+The Credit-Stealing Office Python
+
+The Two-Faced Cousin Rattler
+
+Each archetype card:
+
+Image (snake or snake-human metaphor)
+
+Brutal title
+
+Short “summary of crimes”
+
+Fake quote or snippet (“I swear I’ve changed—just don’t look at my DMs.”)
+
+Click → expands to full/taller card with:
+
+Longer story
+
+Life lesson
+
+Dark humor
+
+Add:
+
+Tag badges like “Ex”, “Friend”, “Family”, “Work”
+
+📖 6. YOUR STORIES (/stories)
+
+Anonymous, encrypted story submission & feed.
+
+Submission form:
+
+Fields:
+
+Snake Type (select): ex, friend, colleague, family, other
+
+Title
+
+“What the snake did” (long textarea)
+
+“What you learned / how you survived” (optional)
+
+Optional image upload:
+
+Image encrypted on client before upload to Firebase Storage (or encrypted key/URL association).
+
+UI: dark, with brutal copy like “Bleed your story onto the page.”
+
+Logic:
+
+Use client-side encryption before sending:
+
+Save encrypted text & metadata to Firestore.
+
+After submission:
+
+Clear form
+
+Show success state with subtle “venom splash” animation.
+
+Feed:
+
+List of stories (decrypted on client):
+
+Title
+
+Snake type tag
+
+Snippet of story
+
+Image (if available)
+
+Stats:
+
+❤️ Likes
+
+💬 Comment count
+
+🔥 Saves
+
+Allow:
+
+Like (per anonymous ID)
+
+Comment (encrypted)
+
+Save story (local + optional encrypted Firestore)
+
+Sorting modes:
+
+Latest
+
+Most liked
+
+Most venom (custom metric: combination of length and likes, etc.)
+
+🔥 7. FRUSTRATION PIT (/frustration-pit)
+
+A dedicated place for venting.
+
+Features:
+
+Big textarea: “Drop your rage here… let the venom flow.”
+
+Submit button: triggers red-screen shake and venom-drip animation.
+
+Entries:
+
+Encrypted and stored in Firestore.
+
+Displayed in a feed:
+
+Each entry rendered like graffiti / scratched text.
+
+Optionally blurred or partially obfuscated for aesthetic.
+
+🕳️ 8. CONFESSION MODE – “THE ABYSS” (/abyss)
+UI:
+
+Full-screen dark mode
+
+Pulsing red text: “Speak your poison…”
+
+Single large input area or modal
+
+Minimal distractions, heavy mood
+
+Behavior:
+
+Confessions encrypted and stored
+
+On display:
+
+Text appears with glitch/distortion effects
+
+Some words randomly blurred or crossed out for style
+
+🖤🪄 9. DARK AI ORACLE – “THE VENOM PROPHET” (/oracle)
+UI:
+
+Terminal-like interface:
+
+Black background
+
+Green or red monospaced text
+
+Typewriter effect
+
+Controls:
+
+Text input for questions
+
+Mood selector:
+
+Venomous
+
+Brutal
+
+Merciful
+
+Chaotic Evil
+
+Behavior:
+
+When user asks something, output a brutal, sarcastic, darkly humorous message.
+
+You may:
+
+Implement a simple, deterministic rules-based responder, OR
+
+Stub out a pluggable AI call location (no actual external API necessary unless requested).
+
+💬 10. ANONYMOUS CHATROOM – “THE SNAKE PIT” (/snake-pit)
+Features:
+
+Real-time chat using:
+
+Firestore real-time listeners OR Firebase Realtime Database
+
+User identity:
+
+Generated nickname (e.g., “Anon Viper #1234”)
+
+Derived from their anonymous ID
+
+Messages:
+
+Encrypted before send
+
+Decrypted on read in UI
+
+Visual:
+
+Chat bubbles with minor jitter/glitch
+
+Venom hiss emoji can auto-append
+
+Theme toggles:
+
+Chaos Mode: random text distortions
+
+Slow Poison: messages fade after some time
+
+Safety:
+
+Auto-delete or prune messages older than 24 hours.
+
+🔮 11. SNAKE TAROT (/tarot)
+
+Tarot-like reading with fictional dark cards.
+
+Cards:
+
+Examples:
+
+“The Venom Cup”
+
+“Twin-Fanged Betrayal”
+
+“Shattered Heart XIII”
+
+“The Hollow Scales”
+
+“The False Promise”
+
+Mechanics:
+
+When user requests a reading:
+
+Randomly select 1–3 cards
+
+Show each with:
+
+Name
+
+Brutal interpretation
+
+Dark lesson / warning
+
+Animations:
+
+Card flip (3D transform)
+
+Smoke/venom fade-in effects
+
+🎭 12. SNAKE PERSONA GENERATOR (/persona)
+Flow:
+
+Ask user ~5 questions (sliders or multiple choice):
+
+How quickly do you trust?
+
+How often have you been betrayed?
+
+How do you react to lies?
+
+etc.
+
+Output:
+
+A snake persona name (e.g., “The Quiet Python”, “The Fire Fang Adder”)
+
+Description
+
+Traits (e.g., “Silent observer, rarely forgets a bite”)
+
+Shadow side & strengths
+
+Brutal “upgrade yourself” tip
+
+🤬 13. RAGE METER (/rage-meter)
+
+Interactive vent tools:
+
+Modes:
+
+Break the Mirror
+
+A glass-like panel that cracks more with each click/tap.
+
+Burn the Letter
+
+User types a message → on click, text visually burns/crumbles away.
+
+Punch the Snake
+
+A cartoonish evil snake head that moves; user “hits” it.
+
+Scream Box
+
+When user types in ALL CAPS, the box shakes violently.
+
+No backend required; purely visual catharsis.
+
+🎤 14. VOICE VENT MODE (/voice-vent)
+Features:
+
+Use Web Speech or audio input API (where available) for volume detection.
+
+Show:
+
+Audio waveform
+
+Intensity-based background changes (more red & distortion with louder input).
+
+As user speaks:
+
+Keywords appear as floating text
+
+The stronger the intensity, the more extreme the visual.
+
+📸 15. SNAKE FILTER GENERATOR (/snake-filter)
+Features:
+
+Use browser camera + Canvas.
+
+Apply overlays:
+
+Snake eyes
+
+Venom drips from lips
+
+Broken heart cracks over the screen
+
+Toxic green smoke
+
+Simple toggles to switch filters.
+
+📚 16. BRUTAL LESSONS (/lessons)
+Content:
+
+Blog-like list of articles such as:
+
+“10 Ways Snakes Destroy Your Peace”
+
+“How to Spot a Fake Ex Before They Strike”
+
+“Why You Keep Feeding Snakes”
+
+Use:
+
+Static MDX or JSON content
+
+Each article route can be /lessons/[slug]
+
+Dark, aggressive insights and life lessons.
+
+🦴 17. ABOUT / DISCLAIMER / PRIVACY
+/about
+
+Explain:
+
+Satirical nature
+
+Fictionalization
+
+No real names or doxxing allowed
+
+Purpose is venting, humor, catharsis
+
+/disclaimer
+
+Not professional mental health or legal advice
+
+Entertainment only
+
+Encourage real-life healthy boundaries
+
+/privacy
+
+Explain:
+
+No login
+
+Anonymous IDs
+
+Client-side encryption
+
+Limited telemetry (if any)
+
+Firebase used only for anonymous encrypted content
+
+🔍 18. SEO & META
+
+Implement full SEO:
+
+Global:
+
+<title> and <meta name="description"> for each route (Next.js metadata API)
+
+Proper <html lang="en">
+
+Social:
+
+Open Graph tags
+
+Twitter cards
+
+OG images (can be dynamically generated via a Next.js OG Image route)
+
+Structured Data:
+
+JSON-LD for:
+
+WebSite
+
+Articles in /lessons
+
+Robots & Sitemap:
+
+robots.txt
+
+sitemap.xml
+
+Performance:
+
+Image optimization via Next.js <Image> component
+
+Lazy-load heavy components where appropriate
+
+📂 19. PROJECT STRUCTURE & FILES
+
+You must produce all key files, at minimum:
+
+package.json
+
+next.config.mjs or next.config.js
+
+tsconfig.json
+
+tailwind.config.js + postcss.config.js
+
+app/layout.tsx & global layout
+
+app/page.tsx and other route files
+
+Components in components/:
+
+Layouts, cards, buttons, modals, etc.
+
+lib/firebase.ts for initializing Firebase
+
+lib/encryption.ts for AES-256 helpers
+
+lib/anonIdentity.ts for anonymous ID logic
+
+public/ assets as needed (icons, default images)
+
+app/api/* routes if required
+
+Also include:
+
+Basic README with instructions:
+
+Setup
+
+.env variables (Firebase config, etc.)
+
+npm install
+
+npm run dev
+
+Vercel deployment notes
+
+🚀 20. DEPLOYMENT REQUIREMENTS (VERCEL)
+
+The final project must:
+
+Build successfully with npm run build
+
+Be compatible with Vercel’s Next.js environment.
+
+Ensure:
+
+No hard-coded localhost-only URLs in production config
+
+Firebase initialized with environment variables (e.g., NEXT_PUBLIC_FIREBASE_API_KEY, etc.)
+
+Public keys are safe to expose as per Firebase norms, but encryption keys remain client-held.
+
+✅ 21. GENERAL RULES
+
+All written content must be original.
+
+No mention of real individuals.
+
+No illegal content, hate speech, or dangerous instructions.
+
+Brutal humor and swearing allowed as style, but stay within fictional, satirical context.
+
+All user content encrypted before leaving client.
+
+UX should feel premium, cohesive, and intense.
+
+🎯 FINAL TASK
+
+Generate the complete Next.js + TypeScript + Tailwind codebase according to this prompt, with all major routes, components, hooks, libraries, and configs needed to run the project locally and deploy it on Vercel.
